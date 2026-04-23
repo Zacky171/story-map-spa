@@ -3,7 +3,7 @@ const path = require('path');
 const { InjectManifest } = require('workbox-webpack-plugin');
 const common = require('./webpack.common.js');
 
-module.exports = merge(common, {
+module.exports = (env, argv) => merge(common, {
   mode: 'production',
   optimization: {
     splitChunks: {
@@ -17,4 +17,3 @@ module.exports = merge(common, {
     }),
   ],
 });
-
