@@ -107,22 +107,33 @@ async function staleWhileRevalidate(request) {
   }
 }
 
-// Push notifications (Advanced)
+// Push notifications (Advanced) - Robust data handling for text/JSON
 self.addEventListener('push', event => {
-  const data = event.data?.json();
+  let data = 'Data default notifikasi';
+  if (event.data) {
+    try {
+      // Try parsing as JSON first
+      data = event.data.json();
+    } catch (e) {
+      // Fallback to plain text if not JSON
+      data = event.data.text();
+    }
+  }
+
+  const title = (typeof data === 'object' ? data?.title : data) || 'Story Baru';
   const options = {
-    body: data?.body || data?.description || 'Story baru tersedia!',
-    icon: data?.icon || '/icons/logo.png',
+    body: (typeof data === 'object' ? (data?.body || data?.description || 'Story baru tersedia!') : data),
+    icon: (typeof data === 'object' ? data?.icon : '/icons/logo.png') || '/icons/logo.png',
     badge: '/icons/logo.png',
-    image: data?.image || data?.photoUrl,
-    data: { id: data?.id },
+    image: typeof data === 'object' ? (data?.image || data?.photoUrl) : undefined,
+    data: { id: typeof data === 'object' ? data?.id : undefined },
     actions: [{
       action: 'view',
       title: 'Lihat Detail',
       icon: '/icons/logo.png'
     }]
   };
-  event.waitUntil(self.registration.showNotification(data?.title || 'Story Baru', options));
+  event.waitUntil(self.registration.showNotification(title, options));
 });
 
 self.addEventListener('notificationclick', event => {
