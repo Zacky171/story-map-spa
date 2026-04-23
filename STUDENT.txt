@@ -10,6 +10,6 @@ Story API (placeholder - replace with real):
 
 Responsive tested at 375px/768px/1024px.
 
-Deployment URL: https://Zacky171.github.io/story-map-spa-personal/
+Deployment URL: https://Zacky171.github.io/story-map-spa/
 
-App deployed to GitHub Pages from gh-pages branch. Site includes full SPA with map, stories, PWA features, production bundles.
+App deployed to GitHub Pages from gh-pages branch (main-compatible). Site includes full SPA with map, stories, PWA features, production bundles. Latest deploy: Published via npm run deploy.
