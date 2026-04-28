@@ -35,6 +35,7 @@ npm run dev  # http://localhost:3000/
 ```bash
 npm run build
 npm run deploy  # gh-pages
+npm run deploy:cf  # Cloudflare Pages\n```bash\n# Important: build first!\nnpm run build && npm run deploy:cf\n```
 ```
 
 ### Windows PowerShell (fix && error)
