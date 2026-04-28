@@ -93,9 +93,15 @@ function guardProtectedRoutes() {
 
 
 function updateNavAuth() {
+  const header = document.querySelector('header');
   const nav = document.querySelector('nav');
-  if (!nav) return;
-  
+  const isAdminRoute = window.location.hash.startsWith('#/admin');
+
+  // Sembunyikan seluruh header saat di halaman admin
+  if (header) header.style.display = isAdminRoute ? 'none' : '';
+  if (!nav || isAdminRoute) return;
+
+  const ul = nav.querySelector('ul');
   const storiesLi = nav.querySelector('a[href="#/stories"]')?.parentElement;
   const addLi = nav.querySelector('a[href="#/add"]')?.parentElement;
   const loginLi = nav.querySelector('a[href="#/login"]')?.parentElement;
@@ -103,38 +109,37 @@ function updateNavAuth() {
   const homeLi = nav.querySelector('a[href="#/"]')?.parentElement;
   let logoutLi = nav.querySelector('.logout-li');
 
-  // Remove any existing nav push-li
   const existingPushLi = nav.querySelector('.push-li');
   if (existingPushLi) existingPushLi.remove();
 
   if (isLoggedIn()) {
-    // Show Stories/Add, hide Home/login/register, show logout
+    if (homeLi) homeLi.style.display = '';
     if (storiesLi) storiesLi.style.display = '';
     if (addLi) addLi.style.display = '';
-    if (homeLi) homeLi.style.display = 'none';
     if (loginLi) loginLi.style.display = 'none';
     if (registerLi) registerLi.style.display = 'none';
 
     if (!logoutLi) {
       logoutLi = document.createElement('li');
       logoutLi.className = 'logout-li';
-      const logoutBtn = document.createElement('a');
-      logoutBtn.href = '#';
-      logoutBtn.className = 'logout btn btn-secondary';
-      logoutBtn.textContent = 'Logout';
-      logoutBtn.addEventListener('click', e => {
+      const logoutLink = document.createElement('a');
+      logoutLink.href = '#';
+      logoutLink.className = 'logout-link';
+      logoutLink.textContent = 'Logout';
+      logoutLink.addEventListener('click', e => {
         e.preventDefault();
         logout();
         window.location.hash = '#/login';
       });
-      logoutLi.appendChild(logoutBtn);
-      nav.querySelector('ul').appendChild(logoutLi);
+      logoutLi.appendChild(logoutLink);
+      if (addLi) addLi.after(logoutLi);
+      else ul.appendChild(logoutLi);
     }
+    logoutLi.style.display = '';
   } else {
-    // Show login/register/Home only, hide Stories/Add/Logout
+    if (homeLi) homeLi.style.display = '';
     if (storiesLi) storiesLi.style.display = 'none';
     if (addLi) addLi.style.display = 'none';
-    if (homeLi) homeLi.style.display = '';
     if (loginLi) loginLi.style.display = '';
     if (registerLi) registerLi.style.display = '';
     if (logoutLi) logoutLi.remove();

@@ -7,13 +7,15 @@ import StoriesPage from '../pages/stories/stories-page.js';
 import AddStoryPage from '../pages/add/add-story-page.js';
 import HomePage from '../pages/home/home-page.js';
 import StoryDetail from '../pages/story-detail.js';
+import AdminPage from '../pages/admin/admin-page.js';
 
 const routes = {
   '/': HomePage,
   '/stories': StoriesPage,
   '/add': AddStoryPage,
   '/login': LoginPage,
-  '/register': RegisterPage
+  '/register': RegisterPage,
+  '/admin': AdminPage,
 };
 
 let isViewTransitionRunning = false;

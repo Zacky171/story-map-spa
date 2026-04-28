@@ -60,7 +60,7 @@ function renderRegisterForm() {
         <input type="password" id="reg-confirm-password" autocomplete="new-password" placeholder="Ulangi password Anda" required minlength="6">
         <button type="button" class="password-toggle" id="toggle-confirm-password" title="Show password"></button>
       </div>
-      <div id="reg-error" class="error" role="alert" aria-live="polite"></div>
+      <div id="reg-error" class="error" role="alert" aria-live="polite" style="display:none;"></div>
       <button type="submit" class="btn btn-primary large-btn" id="register-btn">
         Buat Akun Saya
       </button>

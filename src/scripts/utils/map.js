@@ -66,7 +66,7 @@ export default class Map {
  
     this.#map = map(container, {
       zoom: this.#zoom,
-      scrollWheelZoom: false,
+      scrollWheelZoom: true,
       layers: [tileOsm],
       ...options,
     });

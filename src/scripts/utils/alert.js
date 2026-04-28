@@ -9,13 +9,15 @@ export async function showLoading(title = 'Loading...') {
   });
 }
 
-export async function showSuccess(title = 'Success!', text = '') {
+export async function showSuccess(title = 'Berhasil!', text = '') {
   return Swal.fire({
     icon: 'success',
     title,
     text,
     timer: 2500,
-    showConfirmButton: false
+    timerProgressBar: true,
+    showConfirmButton: false,
+    confirmButtonColor: '#3b82f6',
   });
 }
 
@@ -23,18 +25,22 @@ export async function showError(title = 'Error', text = '') {
   return Swal.fire({
     icon: 'error',
     title,
-    text
+    text,
+    confirmButtonColor: '#ef4444',
   });
 }
 
-export async function showConfirm(title = 'Confirm?', text = '') {
+export async function showConfirm(title = 'Yakin?', text = '') {
   const result = await Swal.fire({
     icon: 'question',
     title,
     text,
     showCancelButton: true,
-    confirmButtonText: 'Yes',
-    cancelButtonText: 'Cancel'
+    confirmButtonText: 'Ya, lanjutkan',
+    cancelButtonText: 'Batal',
+    confirmButtonColor: '#3b82f6',
+    cancelButtonColor: '#94a3b8',
+    reverseButtons: true,
   });
   return result.isConfirmed;
 }

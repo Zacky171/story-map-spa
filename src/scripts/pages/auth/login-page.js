@@ -28,7 +28,7 @@ function renderLoginForm() {
         <input type="password" id="password" autocomplete="current-password" placeholder="Masukkan password" required aria-describedby="pass-error">
         <button type="button" class="password-toggle" id="toggle-login-password" title="Show password"></button>
       </div>
-      <div id="login-error" class="error" role="alert" aria-live="polite"></div>
+      <div id="login-error" class="error" role="alert" aria-live="polite" style="display:none;"></div>
       <button type="submit" class="btn btn-primary large-btn" id="login-btn">
         Masuk Sekarang
       </button>

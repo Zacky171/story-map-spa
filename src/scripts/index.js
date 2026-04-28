@@ -6,33 +6,42 @@ import { checkPushSubscriptionStatus } from './utils/push.js';
 
 App();
 
-// PWA Service Worker & Install
 let deferredPrompt;
 
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-navigator.serviceWorker.register('./sw.js')
+  window.addEventListener('load', async () => {
+    // Di development (localhost:3000 dengan webpack-dev-server),
+    // unregister semua SW lama supaya tidak loop/refresh terus
+    const isDev = location.hostname === 'localhost' && location.port === '3000';
+
+    if (isDev) {
+      const registrations = await navigator.serviceWorker.getRegistrations();
+      for (const reg of registrations) {
+        await reg.unregister();
+        console.log('SW unregistered (dev mode)');
+      }
+      // Hapus semua cache lama
+      const keys = await caches.keys();
+      await Promise.all(keys.map(k => caches.delete(k)));
+      return; // Jangan register SW baru di dev
+    }
+
+    // Production: register SW
+    navigator.serviceWorker.register('./sw.js')
       .then(registration => {
         console.log('SW registered', registration);
         initPWA();
-
-        // Sync pending stories on service worker startup
         registration.sync?.register('sync-stories').catch(() => {});
 
-        // Check push subscription status
-        const swRegistration = registration;
-        window.swRegistration = swRegistration;
-        
-        checkPushSubscriptionStatus(swRegistration).then(subscribed => {
+        window.swRegistration = registration;
+        checkPushSubscriptionStatus(registration).then(subscribed => {
           window.__pushSubscribed = subscribed;
         });
 
-        // Load push utils globally
         import('./utils/push.js').then(module => {
           window.togglePushSubscription = module.togglePushSubscription;
         }).catch(console.error);
 
-        // Listen for messages from service worker (sync events)
         navigator.serviceWorker.addEventListener('message', event => {
           if (event.data?.type === 'SYNC_STORIES') {
             import('./utils/sync.js').then(({ syncAllPending }) => {
@@ -41,26 +50,18 @@ navigator.serviceWorker.register('./sw.js')
           }
         });
       })
-      .catch(error => {
-        console.error('SW registration failed', error);
-      });
+      .catch(error => console.error('SW registration failed', error));
   });
 }
 
 window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault();
   deferredPrompt = e;
-  console.log('Install prompt ready - add btn to UI if needed');
 });
 
-// Global install function for UI btn
 window.installApp = () => {
   if (deferredPrompt) {
     deferredPrompt.prompt();
-    deferredPrompt.userChoice.then((choiceResult) => {
-      console.log('Install choice', choiceResult.outcome);
-      deferredPrompt = null;
-    });
+    deferredPrompt.userChoice.then(() => { deferredPrompt = null; });
   }
 };
-

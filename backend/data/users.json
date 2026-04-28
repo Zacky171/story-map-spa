@@ -1,0 +1,82 @@
+[
+  {
+    "id": "admin-001",
+    "name": "Admin Story Map",
+    "email": "admin@storymap.com",
+    "password": "$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi",
+    "isAdmin": true,
+    "createdAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "user-001",
+    "name": "Budi Santoso",
+    "email": "budi@example.com",
+    "password": "$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi",
+    "isAdmin": false,
+    "createdAt": "2026-01-10T08:00:00.000Z"
+  },
+  {
+    "id": "user-002",
+    "name": "Siti Rahayu",
+    "email": "siti@example.com",
+    "password": "$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi",
+    "isAdmin": false,
+    "createdAt": "2026-01-15T09:30:00.000Z"
+  },
+  {
+    "id": "user-003",
+    "name": "Andi Wijaya",
+    "email": "andi@example.com",
+    "password": "$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi",
+    "isAdmin": false,
+    "createdAt": "2026-02-01T10:00:00.000Z"
+  },
+  {
+    "id": "5f779463-f9b0-45b4-90cf-58a8f489236d",
+    "name": "Maite Roman",
+    "email": "wuxonuxe@mailinator.com",
+    "password": "$2a$10$2u9JQqx473M3SZ.hv/N7C.K0TzwUeM/lk6D9X.qzVMkXo7mzvYoEm",
+    "isAdmin": false,
+    "createdAt": "2026-04-27T15:20:54.001Z"
+  },
+  {
+    "id": "ab8eac67-0185-4e0c-964b-98092125ce0a",
+    "name": "Aline Hays",
+    "email": "nuresimug@mailinator.com",
+    "password": "$2a$10$m6MdOXUj8pdHeTJe/NFEueXqCezAo.DQVr3OWDGjrSR9TKrqMc66i",
+    "isAdmin": false,
+    "createdAt": "2026-04-27T15:21:05.179Z"
+  },
+  {
+    "id": "1535fd9f-00e0-4bca-917e-b9d25098d136",
+    "name": "TaShya Robles",
+    "email": "fugyw@mailinator.com",
+    "password": "$2a$10$ecIVXSLcP8g2eHCXUFuWC.sLHJv1zVTKFvmuvtb4tTu.NN1gbQE16",
+    "isAdmin": false,
+    "createdAt": "2026-04-27T16:43:49.225Z"
+  },
+  {
+    "id": "40f0f215-dd8e-4b9d-80c7-7bc5c3c3d828",
+    "name": "Kaye Monroe",
+    "email": "lakacymuge@mailinator.com",
+    "password": "$2a$10$ZzwDR2GinSFIYpwMIGPEIe.eTpevko.AohaMZw/oAauhmqApv6sr2",
+    "isAdmin": false,
+    "createdAt": "2026-04-27T16:44:13.749Z"
+  },
+  {
+    "id": "abc355ab-7a90-4d9b-83f0-36ea4d76828d",
+    "name": "M MUZACKY RISWANDA",
+    "email": "mmuzackyr9@gmail.com",
+    "password": "$2a$10$k6RDpAE6HE6/RXLkx5FaZeuE5nbaVCj8/QCzq5vFqWIr76/5Ryd96",
+    "isAdmin": false,
+    "createdAt": "2026-04-28T04:12:47.318Z"
+  },
+  {
+    "id": "603abc5e-0d43-484d-bf9d-ed3c41780bbb",
+    "name": "M MUZACKY RISWANDA",
+    "email": "mmuzackyr1@gmail.com",
+    "password": "$2a$10$OEbNDtlkUXhJ8TGzJvG/oe3xP1kJVjsbGjixkw1zlxOXOSFR6IwtO",
+    "isAdmin": false,
+    "createdAt": "2026-04-28T04:20:13.932Z"
+  }
+]

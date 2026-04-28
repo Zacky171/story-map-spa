@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Story Map Admin</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <!-- LOGIN PAGE -->
+  <div id="login-page" class="auth-overlay">
+    <div class="auth-container">
+      <div class="auth-logo">🗺️</div>
+      <h1>Story Map Admin</h1>
+      <p class="subtitle">Masuk ke panel administrasi</p>
+      <form id="login-form">
+        <label for="email">Email</label>
+        <div class="form-group">
+          <input type="email" id="email" placeholder="admin@storymap.com" required autocomplete="email">
+        </div>
+        <label for="password">Password</label>
+        <div class="form-group">
+          <input type="password" id="password" placeholder="Password" required autocomplete="current-password">
+          <button type="button" class="password-toggle" id="toggle-pass" title="Show password">👁</button>
+        </div>
+        <div id="login-error" class="error" style="display:none;"></div>
+        <button type="submit" class="btn btn-primary large-btn" id="login-btn">Masuk</button>
+      </form>
+      <p class="auth-hint">Demo: admin@storymap.com / password</p>
+    </div>
+  </div>
+
+  <!-- ADMIN PANEL -->
+  <div id="admin-panel" style="display:none;">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <span class="sidebar-logo">🗺️</span>
+        <span class="sidebar-title">Story Map</span>
+        <button class="sidebar-close" id="sidebar-close" aria-label="Close sidebar">✕</button>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="#" class="nav-item active" data-page="dashboard">
+          <span class="nav-icon">📊</span> Dashboard
+        </a>
+        <a href="#" class="nav-item" data-page="stories">
+          <span class="nav-icon">📖</span> Stories
+        </a>
+        <a href="#" class="nav-item" data-page="users">
+          <span class="nav-icon">👥</span> Users
+        </a>
+        <a href="#" class="nav-item" data-page="map">
+          <span class="nav-icon">🗺️</span> Story Map
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <button class="btn-logout" id="logout-btn">🚪 Logout</button>
+      </div>
+    </aside>
+
+    <div class="main-wrapper">
+      <header class="topbar">
+        <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">☰</button>
+        <h2 class="topbar-title" id="page-title">Dashboard</h2>
+        <div class="topbar-user">
+          <span id="admin-name">Admin</span>
+          <span class="avatar">👤</span>
+        </div>
+      </header>
+
+      <main class="content" id="main-content">
+        <!-- Pages rendered here -->
+      </main>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script src="admin.js"></script>
+</body>
+</html>
