@@ -70,13 +70,5 @@
     "password": "$2a$10$k6RDpAE6HE6/RXLkx5FaZeuE5nbaVCj8/QCzq5vFqWIr76/5Ryd96",
     "isAdmin": false,
     "createdAt": "2026-04-28T04:12:47.318Z"
-  },
-  {
-    "id": "603abc5e-0d43-484d-bf9d-ed3c41780bbb",
-    "name": "M MUZACKY RISWANDA",
-    "email": "mmuzackyr1@gmail.com",
-    "password": "$2a$10$OEbNDtlkUXhJ8TGzJvG/oe3xP1kJVjsbGjixkw1zlxOXOSFR6IwtO",
-    "isAdmin": false,
-    "createdAt": "2026-04-28T04:20:13.932Z"
   }
 ]
