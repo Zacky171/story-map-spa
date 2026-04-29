@@ -22,7 +22,16 @@ app.use('/v1/admin', require('./routes/admin'));
 // Health check
 app.get('/health', (req, res) => res.json({ status: 'ok', time: new Date().toISOString() }));
 
+// Serve frontend static files (hasil npm run build)
+const frontendPath = path.join(__dirname, '../../docs');
+app.use(express.static(frontendPath));
+
+// SPA fallback — semua route non-API arahkan ke index.html
+app.get('*', (req, res) => {
+  res.sendFile(path.join(frontendPath, 'index.html'));
+});
+
 app.listen(PORT, () => {
-  console.log(`\n🚀 Story Map Backend API running at http://localhost:${PORT}`);
-  console.log(`📡 API Base: http://localhost:${PORT}/v1\n`);
+  console.log(`\n🚀 Story Map running at http://localhost:${PORT}`);
+  console.log(`📡 API: http://localhost:${PORT}/v1\n`);
 });
