@@ -1,2 +1,9 @@
 node_modules
 # dist/
+
+# Backend uploads (foto user, jangan di-commit)
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+# Docs di-generate saat build, tidak perlu di-commit
+# docs/
