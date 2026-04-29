@@ -78,9 +78,8 @@ async function initPushToggle() {
 function runApp() {
   initRouter();
   updateNavAuth();
-  initPushToggle();
-  
-  // Guard routes - check current hash
+  // Push toggle dinonaktifkan — tidak perlu di production
+  // initPushToggle();
   guardProtectedRoutes();
 }
 
