@@ -30,7 +30,7 @@ if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('./sw.js')
       .then(registration => {
         console.log('SW registered', registration);
-        initPWA();
+        // initPWA(); // Dinonaktifkan - tidak perlu Install App button
         registration.sync?.register('sync-stories').catch(() => {});
 
         window.swRegistration = registration;

@@ -19,13 +19,14 @@ export function initPWA() {
 }
 
 function showInstallPromotion() {
-  const btn = document.createElement('button');
-  btn.id = 'install-app-btn';
-  btn.textContent = 'Install App';
-  btn.ariaLabel = 'Install Story Map as PWA';
-  btn.style.cssText = 'position: fixed; bottom: 20px; right: 20px; z-index: 1000; padding: 12px; background: #3b82f6; color: white; border: none; border-radius: 50px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); cursor: pointer;';
-  document.body.appendChild(btn);
-  btn.addEventListener('click', installApp);
+  // Install button dinonaktifkan untuk production
+  // const btn = document.createElement('button');
+  // btn.id = 'install-app-btn';
+  // btn.textContent = 'Install App';
+  // btn.ariaLabel = 'Install Story Map as PWA';
+  // btn.style.cssText = 'position: fixed; bottom: 20px; right: 20px; z-index: 1000; padding: 12px; background: #3b82f6; color: white; border: none; border-radius: 50px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); cursor: pointer;';
+  // document.body.appendChild(btn);
+  // btn.addEventListener('click', installApp);
 }
 
 function hideInstallPromotion() {
