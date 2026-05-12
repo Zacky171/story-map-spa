@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Story Map SPA with map and API",
   "main": "src/scripts/index.js",
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  },
   "scripts": {
     "build": "webpack --config webpack.prod.js",
     "dev": "webpack serve --config webpack.dev.js --open",
