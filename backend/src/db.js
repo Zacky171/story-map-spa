@@ -1,33 +1,26 @@
-// Simple JSON file-based "database" - no external DB needed
-const fs = require('fs');
-const path = require('path');
+// PostgreSQL Database Connection
+const { Pool } = require('pg');
+require('dotenv').config();
 
-const DATA_DIR = path.join(__dirname, '../data');
-const USERS_FILE = path.join(DATA_DIR, 'users.json');
-const STORIES_FILE = path.join(DATA_DIR, 'stories.json');
-const SUBSCRIPTIONS_FILE = path.join(DATA_DIR, 'subscriptions.json');
-
-// Ensure data directory exists
-if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR, { recursive: true });
-
-function readJSON(file, fallback = []) {
-  try {
-    if (!fs.existsSync(file)) return fallback;
-    return JSON.parse(fs.readFileSync(file, 'utf8'));
-  } catch {
-    return fallback;
+// Create connection pool
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
   }
-}
+});
 
-function writeJSON(file, data) {
-  fs.writeFileSync(file, JSON.stringify(data, null, 2), 'utf8');
-}
+// Test connection
+pool.on('connect', () => {
+  console.log('✅ Connected to PostgreSQL (Neon)');
+});
 
+pool.on('error', (err) => {
+  console.error('❌ PostgreSQL connection error:', err);
+});
+
+// Export query function
 module.exports = {
-  getUsers: () => readJSON(USERS_FILE, []),
-  saveUsers: (data) => writeJSON(USERS_FILE, data),
-  getStories: () => readJSON(STORIES_FILE, []),
-  saveStories: (data) => writeJSON(STORIES_FILE, data),
-  getSubscriptions: () => readJSON(SUBSCRIPTIONS_FILE, []),
-  saveSubscriptions: (data) => writeJSON(SUBSCRIPTIONS_FILE, data),
+  query: (text, params) => pool.query(text, params),
+  pool
 };
