@@ -21,5 +21,5 @@ interval = 60
 # - DATABASE_URL (dari Neon)
 # - JWT_SECRET (random string)
 # - JWT_EXPIRES_IN (default: 7d)
-# - PORT (default: 3001)
+# - PORT (default: 3000, HARUS SAMA dengan Railway Public Networking port!)
 # - NODE_ENV (production)
